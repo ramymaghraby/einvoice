@@ -1,0 +1,67 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- CurrencyExchangeRate Column -->
+    <ng-container matColumnDef="CurrencyExchangeRate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CurrencyExchangeRate</th>
+      <td mat-cell *matCellDef="let row">{{row.CurrencyExchangeRate}}</td>
+    </ng-container>
+
+    <!-- DolphinPartyCode Column -->
+    <ng-container matColumnDef="DolphinPartyCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>DolphinPartyCode</th>
+      <td mat-cell *matCellDef="let row">{{row.DolphinPartyCode}}</td>
+    </ng-container>
+
+    <!-- InvoiceDate Column -->
+    <ng-container matColumnDef="InvoiceDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>InvoiceDate</th>
+      <td mat-cell *matCellDef="let row">{{row.InvoiceDate}}</td>
+    </ng-container>
+
+    <!-- InvoiceNumber Column -->
+    <ng-container matColumnDef="InvoiceNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>InvoiceNumber</th>
+      <td mat-cell *matCellDef="let row">{{row.InvoiceNumber}}</td>
+    </ng-container>
+
+    <!-- InvoiceTotalAmount Column -->
+    <ng-container matColumnDef="InvoiceTotalAmount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>InvoiceTotalAmount</th>
+      <td mat-cell *matCellDef="let row">{{row.InvoiceTotalAmount}}</td>
+    </ng-container>
+
+    <!-- InvoiceType Column -->
+    <ng-container matColumnDef="InvoiceType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>InvoiceType</th>
+      <td mat-cell *matCellDef="let row">{{row.InvoiceType}}</td>
+    </ng-container>
+
+    <!-- PartyCountryCode Column -->
+    <ng-container matColumnDef="PartyCountryCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>PartyCountryCode</th>
+      <td mat-cell *matCellDef="let row">{{row.PartyCountryCode}}</td>
+    </ng-container>
+
+        <!-- PartyName Column -->
+        <ng-container matColumnDef="PartyName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>PartyName</th>
+          <td mat-cell *matCellDef="let row">{{row.PartyName}}</td>
+        </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
