@@ -51,6 +51,7 @@ export class CreateInvoiceDto {
 
     @ApiProperty()
     totalAmount: number;
+    
     @ApiProperty()
     issuerId?: number;
     @ApiProperty()
