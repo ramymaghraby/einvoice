@@ -18,6 +18,10 @@ export class LineItemsController {
   findAll() {
     return this.lineItemsService.findAll();
   }
+  @Get()
+  count(){
+    return this.lineItemsService.count();
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

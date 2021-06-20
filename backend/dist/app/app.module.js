@@ -13,7 +13,7 @@ const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
 const line_items_module_1 = require("./line-items/line-items.module");
 const receiver_module_1 = require("./receiver/receiver.module");
-const token_module_1 = require("./token/token.module");
+const integration_data_module_1 = require("./integration-data/integration-data.module");
 const address_module_1 = require("./address/address.module");
 const issuer_module_1 = require("./issuer/issuer.module");
 const invoice_module_1 = require("./invoice/invoice.module");
@@ -31,7 +31,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: [
-            token_module_1.TokenModule,
+            integration_data_module_1.TokenModule,
             address_module_1.AddressModule,
             issuer_module_1.IssuerModule,
             line_items_module_1.LineItemsModule,

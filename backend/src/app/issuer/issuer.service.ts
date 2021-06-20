@@ -1,26 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateIssuerDto } from './dto/create-issuer.dto';
 import { UpdateIssuerDto } from './dto/update-issuer.dto';
+import { Issuer } from './entities/issuer.entity';
 
 @Injectable()
 export class IssuerService {
+  constructor(@InjectRepository(Issuer) private issuerRepo: Repository<Issuer>){}
   create(createIssuerDto: CreateIssuerDto) {
-    return 'This action adds a new issuer';
+    return this.issuerRepo.save(createIssuerDto);
   }
 
   findAll() {
-    return `This action returns all issuer`;
+    return this.issuerRepo.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} issuer`;
+    return this.issuerRepo.findOne(id, {relations:["address"]});
   }
 
   update(id: number, updateIssuerDto: UpdateIssuerDto) {
-    return `This action updates a #${id} issuer`;
+    return this.issuerRepo.update(id, updateIssuerDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} issuer`;
+    return this.issuerRepo.delete(id);
   }
 }

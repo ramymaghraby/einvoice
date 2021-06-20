@@ -15,5 +15,5 @@ export class Value {
     amountSold?: number;
 
     @Column({type: "decimal", precision: 10, scale: 4})
-    currencyExchangeRate: number
+    currencyExchangeRate: number;
 }

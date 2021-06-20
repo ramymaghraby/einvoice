@@ -4,9 +4,9 @@ import { UpdateInvoiceDto } from './dto/update-invoice.dto';
 export declare class InvoiceController {
     private readonly invoiceService;
     constructor(invoiceService: InvoiceService);
-    create(createInvoiceDto: CreateInvoiceDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateInvoiceDto: UpdateInvoiceDto): string;
-    remove(id: string): string;
+    create(createInvoiceDto: CreateInvoiceDto): Promise<CreateInvoiceDto & import("./entities/invoice.entity").Invoice>;
+    findAll(): Promise<import("./entities/invoice.entity").Invoice[]>;
+    findOne(id: string): Promise<import("./entities/invoice.entity").Invoice>;
+    update(id: string, updateInvoiceDto: UpdateInvoiceDto): Promise<import("typeorm").UpdateResult>;
+    remove(id: string): Promise<import("typeorm").DeleteResult>;
 }

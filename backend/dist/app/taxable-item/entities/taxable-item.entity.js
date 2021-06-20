@@ -21,6 +21,14 @@ __decorate([
     __metadata("design:type", Number)
 ], TaxableItem.prototype, "id", void 0);
 __decorate([
+    typeorm_1.Column({ type: "decimal", precision: 10, scale: 4 }),
+    __metadata("design:type", Number)
+], TaxableItem.prototype, "amount", void 0);
+__decorate([
+    typeorm_1.Column({ type: "decimal", precision: 10, scale: 4 }),
+    __metadata("design:type", Number)
+], TaxableItem.prototype, "rate", void 0);
+__decorate([
     typeorm_1.ManyToOne(() => line_item_entity_1.LineItem),
     __metadata("design:type", line_item_entity_1.LineItem)
 ], TaxableItem.prototype, "lineItem", void 0);

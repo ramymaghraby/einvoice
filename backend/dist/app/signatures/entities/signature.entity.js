@@ -21,6 +21,10 @@ __decorate([
     typeorm_1.Column({ length: 3 }),
     __metadata("design:type", String)
 ], Signature.prototype, "type", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Signature.prototype, "value", void 0);
 Signature = __decorate([
     typeorm_1.Entity('Signature')
 ], Signature);

@@ -1,1 +1,1 @@
-{"version":3,"file":"create-signature.dto.js","sourceRoot":"","sources":["../../../../src/app/signatures/dto/create-signature.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,kBAAkB;CAAG;AAAlC,gDAAkC"}
+{"version":3,"file":"create-signature.dto.js","sourceRoot":"","sources":["../../../../src/app/signatures/dto/create-signature.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAA8C;AAE9C,MAAa,kBAAkB;CAO9B;AALG;IADC,qBAAW,EAAE;;8CACF;AAEZ;IADC,qBAAW,EAAE;;gDACD;AAEb;IADC,qBAAW,EAAE;;iDACA;AANlB,gDAOC"}

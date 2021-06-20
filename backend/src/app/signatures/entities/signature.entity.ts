@@ -7,6 +7,6 @@ export class Signature {
 
     @Column({length: 3})
     type: string;
-
+    @Column()
     value: string;
 }

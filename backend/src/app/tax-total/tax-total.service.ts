@@ -1,26 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateTaxTotalDto } from './dto/create-tax-total.dto';
 import { UpdateTaxTotalDto } from './dto/update-tax-total.dto';
+import { TaxTotal } from './entities/tax-total.entity';
 
 @Injectable()
 export class TaxTotalService {
+  constructor(@InjectRepository(TaxTotal) private taxTotalRepo: Repository<TaxTotal>){}
   create(createTaxTotalDto: CreateTaxTotalDto) {
-    return 'This action adds a new taxTotal';
+    return this.taxTotalRepo.save(createTaxTotalDto);
   }
 
   findAll() {
-    return `This action returns all taxTotal`;
+    return this.taxTotalRepo.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} taxTotal`;
+    return this.taxTotalRepo.findOne(id, {relations:["taxType","invoice"]});
   }
 
   update(id: number, updateTaxTotalDto: UpdateTaxTotalDto) {
-    return `This action updates a #${id} taxTotal`;
+    return this.taxTotalRepo.update(id, updateTaxTotalDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} taxTotal`;
+    return this.taxTotalRepo.delete(id);
   }
 }

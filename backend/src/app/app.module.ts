@@ -4,7 +4,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { LineItemsModule } from 'src/app/line-items/line-items.module';
 import { ReceiverModule } from 'src/app/receiver/receiver.module';
-import { TokenModule } from './token/token.module';
+import { TokenModule } from './integration-data/integration-data.module';
 import { AddressModule } from './address/address.module';
 import { IssuerModule } from './issuer/issuer.module';
 import { InvoiceModule } from './invoice/invoice.module';

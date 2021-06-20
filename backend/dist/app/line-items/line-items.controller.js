@@ -28,6 +28,9 @@ let LineItemsController = class LineItemsController {
     findAll() {
         return this.lineItemsService.findAll();
     }
+    count() {
+        return this.lineItemsService.count();
+    }
     findOne(id) {
         return this.lineItemsService.findOne(+id);
     }
@@ -51,6 +54,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], LineItemsController.prototype, "findAll", null);
+__decorate([
+    common_1.Get(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], LineItemsController.prototype, "count", null);
 __decorate([
     common_1.Get(':id'),
     __param(0, common_1.Param('id')),

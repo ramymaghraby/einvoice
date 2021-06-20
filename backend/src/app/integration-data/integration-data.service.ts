@@ -3,7 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ClientOAuth2 = require('client-oauth2');
 @Injectable()
-export class TokenService {
+export class IntegrationDataService {
   constructor(private http: HttpService) {}
   taxApiBaseUrl = 'https://api.preprod.invoicing.eta.gov.eg';
   taxBaseUrl = 'https://id.preprod.eta.gov.eg';
@@ -93,7 +93,7 @@ export class TokenService {
 }
 
 async getDocumentTypesFromTax() {
-  let documentTypesfromTax
+  const documentTypesfromTax = []
   const token = await this.authAsTaxPayer();
   const headersRequest = {
     // 'Content-Type': 'application/json', // afaik this one is not needed
@@ -102,7 +102,7 @@ async getDocumentTypesFromTax() {
   }
   try {
      const {data: documentTypeResponse } = await axios.get( this.taxApiBaseUrl + '/api/v1/documenttypes', {headers: headersRequest})
-     documentTypesfromTax = documentTypeResponse;
+     documentTypesfromTax.push(documentTypeResponse);
      
   } catch (error) {
     console.log(error.message);    

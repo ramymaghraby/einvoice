@@ -1,26 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateValueDto } from './dto/create-value.dto';
 import { UpdateValueDto } from './dto/update-value.dto';
+import { Value } from './entities/value.entity';
 
 @Injectable()
 export class ValueService {
+  constructor(@InjectRepository(Value) private valueRepo: Repository<Value>){}
   create(createValueDto: CreateValueDto) {
-    return 'This action adds a new value';
+    return this.valueRepo.save(createValueDto);
   }
 
   findAll() {
-    return `This action returns all value`;
+    return this.valueRepo.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} value`;
+    return this.valueRepo.findOne(id);
   }
 
   update(id: number, updateValueDto: UpdateValueDto) {
-    return `This action updates a #${id} value`;
+    return this.valueRepo.update(id, updateValueDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} value`;
+    return this.valueRepo.delete(id);
   }
 }
