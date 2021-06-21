@@ -17,6 +17,7 @@ import { TaxableItemModule } from './taxable-item/taxable-item.module';
 import { PaymentModule } from './payment/payment.module';
 import { DeliveryModule } from './delivery/delivery.module';
 import { ValueModule } from './value/value.module';
+import { ReceiversAppModule } from './receivers-app/receivers-app.module';
 
 @Module({
   imports: [
@@ -40,6 +41,21 @@ import { ValueModule } from './value/value.module';
         encrypt: false
       }
     }),
+    TypeOrmModule.forRoot({
+      name: 'receivers',
+      type: 'mssql',
+      host: '10.0.1.73',
+      port: 1433,
+      username: 'sa',
+      password: '',
+      database: 'TrampGulf',
+      autoLoadEntities: true,
+      logging: true,
+      options: {
+        encrypt: false
+      }
+    }),
+    ReceiversAppModule,
     HttpModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
