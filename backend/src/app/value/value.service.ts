@@ -25,6 +25,8 @@ export class ValueService {
   }
 
   remove(id: number) {
+    console.log(id);
+    
     return this.valueRepo.delete(id);
   }
 }
