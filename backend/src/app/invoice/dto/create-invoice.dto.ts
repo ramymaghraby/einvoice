@@ -1,4 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { CreateDeliveryDto } from "src/app/delivery/dto/create-delivery.dto";
+import { CreateIssuerDto } from "src/app/issuer/dto/create-issuer.dto";
+import { CreatePaymentDto } from "src/app/payment/dto/create-payment.dto";
+import { CreateReceiverDto } from "src/app/receiver/dto/create-receiver.dto";
+import { CreateSignatureDto } from "src/app/signatures/dto/create-signature.dto";
 
 export class CreateInvoiceDto {
     @ApiProperty()
@@ -53,13 +58,13 @@ export class CreateInvoiceDto {
     totalAmount: number;
     
     @ApiProperty()
-    issuerId?: number;
+    issuer?: CreateIssuerDto;
     @ApiProperty()
-    receiverId?: number;
+    receiver?: CreateReceiverDto;
     @ApiProperty()
-    signaturesId?: number;
+    signatures?: CreateSignatureDto;
     @ApiProperty()
-    paymentId?: number;
+    payment?: CreatePaymentDto;
     @ApiProperty()
-    deliveryId?: number;
+    delivery?: CreateDeliveryDto;
 }

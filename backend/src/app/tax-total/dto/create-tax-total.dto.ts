@@ -1,4 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { CreateInvoiceDto } from "src/app/invoice/dto/create-invoice.dto";
+import { CreateTaxTypeDto } from "src/app/tax-type/dto/create-tax-type.dto";
 
 export class CreateTaxTotalDto {
     @ApiProperty()
@@ -8,7 +10,7 @@ export class CreateTaxTotalDto {
     amount: number;
 
     @ApiProperty()
-    taxTypeId?: number;
+    taxType?: CreateTaxTypeDto;
     @ApiProperty()
-    invoiceId?: number;
+    invoice?: CreateInvoiceDto;
 }

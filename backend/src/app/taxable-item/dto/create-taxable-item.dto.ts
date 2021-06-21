@@ -1,4 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { CreateLineItemDto } from "src/app/line-items/dto/create-line-item.dto";
+import { CreateTaxSubTypeDto } from "src/app/tax-sub-type/dto/create-tax-sub-type.dto";
+import { CreateTaxTypeDto } from "src/app/tax-type/dto/create-tax-type.dto";
 
 export class CreateTaxableItemDto {
     @ApiProperty()
@@ -8,11 +11,11 @@ export class CreateTaxableItemDto {
     @ApiProperty()
     rate: number;
     @ApiProperty()
-    lineItemId?: number;
+    lineItem?: CreateLineItemDto;
 
     @ApiProperty()
-    taxTypeId?: number;
+    taxType?: CreateTaxTypeDto;
 
     @ApiProperty()
-    subTypeId?: number;
+    subType?: CreateTaxSubTypeDto;
 }

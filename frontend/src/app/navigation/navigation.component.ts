@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 
 
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
 
 
 
@@ -25,19 +25,5 @@ export class NavigationComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private authSrv: AuthService
     ) {}
-  ngOnInit() {
-    this.getGroupToken();
-
-  }
-
-  getGroupToken() {
-    this.authSrv.getGroupToken().subscribe(res => console.log(res))
-  }
-
-  getTaxToken() {
-    this.authSrv.getTaxToken().subscribe(res => console.log(res))
-  }
-
-
 
 }

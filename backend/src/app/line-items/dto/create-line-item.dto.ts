@@ -1,4 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { CreateDiscountDto } from "src/app/discount/dto/create-discount.dto";
+import { CreateInvoiceDto } from "src/app/invoice/dto/create-invoice.dto";
+import { CreateValueDto } from "src/app/value/dto/create-value.dto";
 
 export class CreateLineItemDto {
     @ApiProperty()
@@ -40,10 +43,10 @@ export class CreateLineItemDto {
     @ApiProperty()
     internalCode: string;
     @ApiProperty()
-    invoiceId?: number;
+    invoice?: CreateInvoiceDto;
     @ApiProperty()
-    discountId?: number;
+    discount?: CreateDiscountDto;
     @ApiProperty()
-    unitValueId?: number;
+    unitValue?: CreateValueDto;
 
 }

@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { CreateAddressDto } from "src/app/address/dto/create-address.dto";
 
 export class CreateReceiverDto {
     @ApiProperty()
@@ -13,5 +14,5 @@ export class CreateReceiverDto {
     @ApiProperty()
     name: string
     @ApiProperty()
-    addressId?: number;
+    address?: CreateAddressDto;
 }

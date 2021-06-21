@@ -26,15 +26,19 @@ import { ValueModule } from './value/value.module';
     LineItemsModule,
     ReceiverModule,
     TypeOrmModule.forRoot({
-      type: 'mysql', //mysql
+      name: 'default',
+      type: 'mssql', //mysql
       host: 'localhost',
-      port: 3306, //3306
+      port: 1433, //3306
       username: 'nest',
       password: 'P@ssw0rd',
       database: 'nest',
       synchronize: true,
       logging: true,
       autoLoadEntities: true,
+      options: {
+        encrypt: false
+      }
     }),
     HttpModule,
     ServeStaticModule.forRoot({
