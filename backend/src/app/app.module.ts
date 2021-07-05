@@ -18,9 +18,12 @@ import { PaymentModule } from './payment/payment.module';
 import { DeliveryModule } from './delivery/delivery.module';
 import { ValueModule } from './value/value.module';
 import { ReceiversAppModule } from './receivers-app/receivers-app.module';
+import { FreightModule } from './freight/freight.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TokenModule,
     AddressModule,
     IssuerModule,
@@ -29,11 +32,11 @@ import { ReceiversAppModule } from './receivers-app/receivers-app.module';
     TypeOrmModule.forRoot({
       name: 'default',
       type: 'mssql', //mysql
-      host: 'localhost',
+      host: process.env.DEF_DATABASE_HOST,
       port: 1433, //3306
-      username: 'nest',
-      password: 'P@ssw0rd',
-      database: 'nest',
+      username: process.env.DEF_DATABASE_USER,
+      password: process.env.DEF_DATABASE_PASSWORD,
+      database: process.env.DEF_DATABASE_NAME,
       synchronize: true,
       logging: true,
       autoLoadEntities: true,
@@ -44,11 +47,25 @@ import { ReceiversAppModule } from './receivers-app/receivers-app.module';
     TypeOrmModule.forRoot({
       name: 'receivers',
       type: 'mssql',
-      host: '10.0.1.73',
+      host: process.env.REC_DATABASE_HOST,
       port: 1433,
-      username: 'sa',
-      password: '',
-      database: 'TrampGulf',
+      username: process.env.REC_DATABASE_USER,
+      password: process.env.REC_DATABASE_PASSWORD,
+      database: process.env.REC_DATABASE_NAME,
+      autoLoadEntities: true,
+      logging: true,
+      options: {
+        encrypt: false
+      }
+    }),
+    TypeOrmModule.forRoot({
+      name: 'freight',
+      type: 'mssql',
+      host: process.env.FRE_DATABASE_HOST,
+      port: 5051,
+      username: process.env.FRE_DATABASE_USER,
+      password: process.env.FRE_DATABASE_PASSWORD,
+      database: process.env.FRE_DATABASE_NAME,
       autoLoadEntities: true,
       logging: true,
       options: {
@@ -57,9 +74,9 @@ import { ReceiversAppModule } from './receivers-app/receivers-app.module';
     }),
     ReceiversAppModule,
     HttpModule,
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
-    }),
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', 'client'),
+    // }),
     InvoiceModule,
     TaxTotalModule,
     SignaturesModule,
@@ -70,6 +87,7 @@ import { ReceiversAppModule } from './receivers-app/receivers-app.module';
     PaymentModule,
     DeliveryModule,
     ValueModule,
+    FreightModule
   ],
 })
 export class AppModule {}

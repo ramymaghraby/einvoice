@@ -1,4 +1,4 @@
-import { Column, PrimaryGeneratedColumn, ViewEntity } from "typeorm";
+import { Column, ViewEntity } from "typeorm";
 
 @ViewEntity('Elec_Tax_Inv')
 export class ReceiversApp {

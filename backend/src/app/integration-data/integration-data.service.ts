@@ -19,7 +19,7 @@ export class IntegrationDataService {
       clientSecret: 'Hrliid?l/Q-om@RYSVqMANVkp3O0Cg31',
       accessTokenUri: this.groupTokenBaseUrl + '/token',
       authorizationUri: this.groupTokenBaseUrl + '/authorize',
-      redirectUri: this.groupRedirectUrl
+      // redirectUri: this.groupRedirectUrl
     });
     const toktok = await token.credentials.getToken().then((receivedToken) => {
       return receivedToken.data;
@@ -84,7 +84,7 @@ export class IntegrationDataService {
       clientId: this.taxClientId,
       clientSecret: this.taxClientSecret,
       accessTokenUri:this.taxBaseUrl + '/connect/token',
-      authorizationUri: this.taxBaseUrl + 'connect/authorize',
+      authorizationUri: this.taxBaseUrl + '/connect/authorize',
     });
     const toktok = await token.credentials.getToken().then((receivedToken) => {      
       return receivedToken.data;

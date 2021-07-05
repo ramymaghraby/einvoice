@@ -10,7 +10,6 @@ export class ReceiversAppService {
   constructor(
     @InjectRepository(ReceiversApp, 'receivers')
     private receiversAppRepo: Repository<ReceiversApp>
-    
   ){}
   
   create(createReceiversAppDto: CreateReceiversAppDto) {
