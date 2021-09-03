@@ -7,4 +7,4 @@ import { IntegrationDataService } from "./integration-data.service";
     controllers: [IntegrationDataController],
     providers: [IntegrationDataService]
 })
-export class TokenModule {}
+export class IntegrationModule {}

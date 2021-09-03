@@ -5,7 +5,7 @@ import { CreateDiscountDto } from './dto/create-discount.dto';
 import { UpdateDiscountDto } from './dto/update-discount.dto';
 
 @ApiTags('Discount')
-@Controller('discount')
+@Controller('Discount')
 export class DiscountController {
   constructor(private readonly discountService: DiscountService) {}
 

@@ -1,3 +1,4 @@
+import { type } from "os";
 import { Discount } from "src/app/discount/entities/discount.entity";
 import { Invoice } from "src/app/invoice/entities/invoice.entity";
 import { TaxableItem } from "src/app/taxable-item/entities/taxable-item.entity";
@@ -49,7 +50,7 @@ export class LineItem {
     @JoinColumn()
     invoice: Invoice;
 
-    @OneToOne(()=>Discount)
+    @OneToOne(() =>Discount)
     @JoinColumn()
     discount?: Discount;
 
