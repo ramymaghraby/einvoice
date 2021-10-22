@@ -7,7 +7,7 @@ import { Signature } from "src/app/signatures/entities/signature.entity";
 import { TaxTotal } from "src/app/tax-total/entities/tax-total.entity";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Invoices')
+@Entity('invoices')
 export class Invoice {
     @PrimaryGeneratedColumn()
     id: number;
@@ -64,16 +64,16 @@ export class Invoice {
     @JoinColumn()
     issuer: Issuer;
 
-    @OneToOne(()=>Receiver)
+    @OneToOne(()=>Receiver, receiver => receiver.invoice)
     @JoinColumn()
     receiver: Receiver;
 
     @OneToMany(()=>LineItem, (lineItems)=>lineItems.invoice)
     invoiceLines: Promise<LineItem[]>;
     
-    @OneToOne(()=>Signature)
+    @OneToOne(()=>Signature, signature => signature.invoice)
     @JoinColumn()
-    signatures: Signature;
+    signature: Signature;
 
     @OneToMany(()=> TaxTotal, (taxTotal)=> taxTotal)
     @JoinColumn()
@@ -83,7 +83,7 @@ export class Invoice {
     @JoinColumn()
     payment?: Payment;
 
-    @OneToOne(()=>Delivery)
+    @OneToOne(()=>Delivery, delivery => delivery.invoice)
     @JoinColumn()
     delivery?: Delivery;
 

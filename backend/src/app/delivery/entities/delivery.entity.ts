@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Invoice } from 'src/app/invoice/entities/invoice.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Delivery')
+@Entity('delivery')
 export class Delivery {
     @PrimaryGeneratedColumn()
     id: number;
@@ -28,5 +29,8 @@ export class Delivery {
 
     @Column({length: 300})
     terms?: string;
+
+    @OneToOne(() => Invoice, invoice => invoice.delivery)
+    invoice: Invoice
     
 }

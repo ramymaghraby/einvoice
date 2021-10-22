@@ -1,13 +1,28 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit, OnInit {
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private NavigationService: NavigationComponent
+    ) {}
+
+    ngOnInit(){
+      this.NavigationService.changeTitle();
+    }
+  
+  ngAfterViewInit(){
+    this.NavigationService.changeTitle();
+
+  }
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -28,6 +43,4 @@ export class DashboardComponent {
       ];
     })
   );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
 }

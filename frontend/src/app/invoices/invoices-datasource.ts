@@ -8,14 +8,12 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface InvoicesItem {
   id: number;
   CurrencyExchangeRate: string;
-  DolphinPartyCode: string;
   InvoiceDate: string;
   InvoiceNumber: string;
   InvoiceTotalAmount: string;
   InvoiceType: string;
   PartyCountryCode: string;
   PartyName: string;
-  // InvoiceDetails: [InvoiceDetails];
 }
 
 export interface InvoiceDetails {
@@ -28,26 +26,26 @@ export interface InvoiceDetails {
 // TODO: replace this with real data from your application
 //  InvoiceDetails:[{Description:'Koko', Quantity: '1', Total: '5', UnitType: 'number'}]
 const EXAMPLE_DATA: InvoicesItem[] = [
-  {id: 1, CurrencyExchangeRate: 'Hydrogen', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 2, CurrencyExchangeRate: 'Helium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 3, CurrencyExchangeRate: 'Lithium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 4, CurrencyExchangeRate: 'Beryllium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 5, CurrencyExchangeRate: 'Boron', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 6, CurrencyExchangeRate: 'Carbon', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 7, CurrencyExchangeRate: 'Nitrogen', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 8, CurrencyExchangeRate: 'Oxygen', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 9, CurrencyExchangeRate: 'Fluorine', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 10, CurrencyExchangeRate: 'Neon', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 11, CurrencyExchangeRate: 'Sodium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 12, CurrencyExchangeRate: 'Magnesium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 13, CurrencyExchangeRate: 'Aluminum', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 14, CurrencyExchangeRate: 'Silicon', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 15, CurrencyExchangeRate: 'Phosphorus', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 16, CurrencyExchangeRate: 'Sulfur', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 17, CurrencyExchangeRate: 'Chlorine', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 18, CurrencyExchangeRate: 'Argon', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 19, CurrencyExchangeRate: 'Potassium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
-  {id: 20, CurrencyExchangeRate: 'Calcium', DolphinPartyCode: 'HUB056', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 1, CurrencyExchangeRate: 'Hydrogen', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 2, CurrencyExchangeRate: 'Helium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 3, CurrencyExchangeRate: 'Lithium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 4, CurrencyExchangeRate: 'Beryllium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 5, CurrencyExchangeRate: 'Boron', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 6, CurrencyExchangeRate: 'Carbon', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 7, CurrencyExchangeRate: 'Nitrogen', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 8, CurrencyExchangeRate: 'Oxygen', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 9, CurrencyExchangeRate: 'Fluorine', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 10, CurrencyExchangeRate: 'Neon', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 11, CurrencyExchangeRate: 'Sodium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 12, CurrencyExchangeRate: 'Magnesium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 13, CurrencyExchangeRate: 'Aluminum', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 14, CurrencyExchangeRate: 'Silicon', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 15, CurrencyExchangeRate: 'Phosphorus', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 16, CurrencyExchangeRate: 'Sulfur', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 17, CurrencyExchangeRate: 'Chlorine', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 18, CurrencyExchangeRate: 'Argon', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 19, CurrencyExchangeRate: 'Potassium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
+  {id: 20, CurrencyExchangeRate: 'Calcium', InvoiceDate: '2021-05-01', InvoiceNumber: '111223', InvoiceTotalAmount: '123',InvoiceType:'I', PartyCountryCode: 'EG', PartyName: 'Magdy'},
 ];
 
 /**

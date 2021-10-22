@@ -1,11 +1,10 @@
-import { type } from "os";
 import { Discount } from "src/app/discount/entities/discount.entity";
 import { Invoice } from "src/app/invoice/entities/invoice.entity";
 import { TaxableItem } from "src/app/taxable-item/entities/taxable-item.entity";
 import { Value } from "src/app/value/entities/value.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('LineItem')
+@Entity('lineItem')
 export class LineItem {
     @PrimaryGeneratedColumn()
     id: number;

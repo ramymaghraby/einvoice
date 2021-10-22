@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('TaxSubType')
+@Entity('taxSubType')
 export class TaxSubType {
     @PrimaryGeneratedColumn()
     id: number;

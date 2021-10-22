@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Invoice } from "src/app/invoice/entities/invoice.entity";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Signature')
+@Entity('signature')
 export class Signature {
     @PrimaryGeneratedColumn()
     id: number;
@@ -9,4 +10,6 @@ export class Signature {
     type: string;
     @Column()
     value: string;
+    @OneToOne(() => Invoice, invoice => invoice.signature)
+    invoice: Invoice
 }

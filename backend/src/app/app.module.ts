@@ -18,6 +18,20 @@ import { PaymentModule } from './payment/payment.module';
 import { DeliveryModule } from './delivery/delivery.module';
 import { ValueModule } from './value/value.module';
 import { ConfigModule } from '@nestjs/config';
+import { Address } from './address/entities/address.entity';
+import { Delivery } from './delivery/entities/delivery.entity';
+import { Discount } from './discount/entities/discount.entity';
+import { Invoice } from './invoice/entities/invoice.entity';
+import { Issuer } from './issuer/entities/issuer.entity';
+import { LineItem } from './line-items/entities/line-item.entity';
+import { Payment } from './payment/entities/payment.entity';
+import { Receiver } from './receiver/entities/receiver.entity';
+import { Signature } from './signatures/entities/signature.entity';
+import { TaxSubType } from './tax-sub-type/entities/tax-sub-type.entity';
+import { TaxTotal } from './tax-total/entities/tax-total.entity';
+import { TaxType } from './tax-type/entities/tax-type.entity';
+import { TaxableItem } from './taxable-item/entities/taxable-item.entity';
+import { Value } from './value/entities/value.entity';
 
 @Module({
   imports: [
@@ -30,14 +44,18 @@ import { ConfigModule } from '@nestjs/config';
     TypeOrmModule.forRoot({
       name: 'default',
       type: 'mysql', //'mssql', //mysql
-      host: process.env.DEF_DATABASE_HOST,
+      host: 'localhost', // process.env.DEF_DATABASE_HOST,
       port: 3306, // 1433, //3306
-      username: process.env.DEF_DATABASE_USER,
-      password: process.env.DEF_DATABASE_PASSWORD,
-      database: process.env.DEF_DATABASE_NAME,
+      username: 'nest',// process.env.DEF_DATABASE_USER,
+      password: 'P@ssw0rd',//process.env.DEF_DATABASE_PASSWORD,
+      database: 'greenops',//process.env.DEF_DATABASE_NAME,
       synchronize: false,
       logging: true,
       autoLoadEntities: true,
+      dropSchema: false,
+      // migrations: ["dist/migrations/*{.ts,.js}"],
+      // migrationsTableName: "migrations_typeorm",
+      // migrationsRun: true
       // options: {
       //   encrypt: false
       // }

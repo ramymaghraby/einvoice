@@ -3,7 +3,7 @@ import { TaxSubType } from "src/app/tax-sub-type/entities/tax-sub-type.entity";
 import { TaxType } from "src/app/tax-type/entities/tax-type.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('TaxableItems')
+@Entity('taxableItems')
 export class TaxableItem {
     @PrimaryGeneratedColumn()
     id: number;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-// import { MsalService } from '@azure/msal-angular';
-// import { AuthenticationResult } from '@azure/msal-common';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -8,17 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dashboard-app';
+  public constructor (private titleService: Title) {}
 
-  constructor(
-    // private msalService: MsalService
-  ){
-
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle)
   }
 
-  // login(){
-  //   this.msalService.loginPopup().subscribe((resp: AuthenticationResult)=>{
-  //     this.msalService.instance.setActiveAccount(resp.account)
-  //   });
-  // }
 }

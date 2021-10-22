@@ -1,7 +1,8 @@
+import { Invoice } from 'src/app/invoice/entities/invoice.entity';
 import { Address } from "src/app/address/entities/address.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Receiver')
+@Entity('receiver')
 export class Receiver {
     @PrimaryGeneratedColumn()
     id: number;
@@ -13,9 +14,13 @@ export class Receiver {
     regNum: string;
 
     @Column({length: 200})
-    name: string
+    name: string;
 
     @OneToOne(()=> Address)
     @JoinColumn()
-    address: Address
+    address: Address;
+
+    @OneToOne(() => Invoice, invoice => invoice.receiver)
+    invoice: Invoice;
+
 }

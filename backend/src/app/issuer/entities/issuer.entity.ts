@@ -1,7 +1,7 @@
 import { Address } from "src/app/address/entities/address.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Issuer')
+@Entity('issuer')
 export class Issuer {
     @PrimaryGeneratedColumn()
     id: number;

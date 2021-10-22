@@ -2,7 +2,7 @@ import { Invoice } from "src/app/invoice/entities/invoice.entity";
 import { TaxType } from "src/app/tax-type/entities/tax-type.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('TaxTotal')
+@Entity('taxTotal')
 export class TaxTotal {
     @PrimaryGeneratedColumn()
     id: number;
