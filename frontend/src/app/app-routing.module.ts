@@ -1,3 +1,4 @@
+import { AddressComponent } from './master-data/address/address.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/Dashboard', pathMatch:'full'},
   { path: 'Dashboard', component: DashboardComponent},
   { path: 'Invoices', component: InvoicesComponent},
+  { path: 'Address', component: AddressComponent }
 
 ]
 
