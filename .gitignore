@@ -4,3 +4,81 @@
 /backend/dist
 /frontend/dist
 /*/.env
+
+/PyTaxAxxount/node_modules
+node_modules
+bower_components/
+
+
+
+/PyTaxAxxount/build
+/PyTaxAxxount/dist
+/PyTaxAxxount/node_modules
+/PyTaxAxxount/.DS_Store
+/PyTaxAxxount/.idea
+/PyTaxAxxount/sassdoc
+
+
+# compiled output
+/PyTaxAxxount//dist
+/PyTaxAxxount//tmp
+/PyTaxAxxount//out-tsc
+/PyTaxAxxount//bazel-out
+/PyTaxAxxount/app/**/*.js
+/PyTaxAxxount/app/**/*.js.map
+
+# dependencies
+/PyTaxAxxount//node_modules
+/PyTaxAxxount/npm-debug.log
+/PyTaxAxxount/yarn-error.log
+
+# profiling files
+/PyTaxAxxount/chrome-profiler-events.json
+/PyTaxAxxount/speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/PyTaxAxxount//.angular/cache
+/PyTaxAxxount//.sass-cache
+/PyTaxAxxount//connect.lock
+/PyTaxAxxount//coverage
+/PyTaxAxxount//libpeerconnection.log
+/PyTaxAxxount/npm-debug.log
+/PyTaxAxxount/yarn-error.log
+/PyTaxAxxount/testem.log
+/PyTaxAxxount//typings
+
+# e2e
+/PyTaxAxxount/e2e/*.js
+/PyTaxAxxount/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+### DotnetCore ###
+# .NET Core build folders
+/ETABridge/bin/
+/ETABridge/obj/
+
+# Common node modules locations
+/node_modules
+/wwwroot/node_modules
+
+

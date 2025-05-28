@@ -1,0 +1,215 @@
+<div class="card flex flex-wrap gap-3 p-fluid">
+    <div class="grid col-12 formgrid p-fluid">
+        <div class="field col-3">
+            <label class="font-bold block mb-2">From:</label>
+            <p-calendar inputId="fromDate" [(ngModel)]="fromDate" [showTime]="true" [showButtonBar]="true" />
+        </div>
+        <div class="field col-3">
+            <label class="font-bold block mb-2">To:</label>
+            <p-calendar inputId="toDate" [(ngModel)]="toDate" [showTime]="true" [showButtonBar]="true" />
+        </div>
+        <div class="field">
+            <label class="font-bold block mb-2"><br></label>
+            <p-button class="flex-row" (click)="searchByRange(fromDate,toDate)">Search</p-button>
+        </div>
+
+    </div>
+</div>
+<div class="card">
+    <p-table [value]="invoices" [tableStyle]="{ 'min-width': '50rem' }" [loading]="loading" [rowHover]="true"
+        styleClass="p-datatable-gridlines" [paginator]="true" [rowsPerPageOptions]="[10,25,50,100]" [rows]="10">
+        <ng-template pTemplate="loadingbody">
+            <tr>
+                <td colspan="8">Loading Invoices data. Please wait.</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>#</th>
+                <th>
+                    <div>
+                        UUID
+                        <p-columnFilter type="text" field="uuid" display="menu" />
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Internal ID
+                        <p-columnFilter type="text" field="internalId" display="menu" />
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Date Time Issued
+                        <p-columnFilter type="text" field="dateTimeIssued" display="menu" />
+
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Issuer Tax ID:
+                        <p-columnFilter type="text" field="issuerId" display="menu" />
+
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Issuer Name
+                        <p-columnFilter type="text" field="issuerName" display="menu" />
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Receiver Tax ID:
+                        <p-columnFilter type="text" field="receiverId" display="menu" />
+
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Receiver Name
+                        <p-columnFilter type="text" field="receiverName" display="menu" />
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Status
+                        <p-columnFilter type="text" field="status" display="menu" />
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        Total Amount
+                        <p-columnFilter type="text" field="uuid" display="menu" />
+                    </div>
+                </th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-invoice let-rowIndex="rowIndex">
+            <tr>
+                <td>{{ rowIndex+1 }}</td>
+                <td><a href="{{invoice.publicUrl}}" target="_blank">{{ invoice.uuid }}</a> </td>
+                <td>{{ invoice.internalId }}</td>
+                <td>{{ invoice.dateTimeIssued }}</td>
+                <td>{{ invoice.issuerId }}</td>
+                <td>{{ invoice.issuerName }}</td>
+                <td>{{ invoice.receiverId }}</td>
+                <td>{{ invoice.receiverName }}</td>
+                <td>{{ invoice.status }}</td>
+                <td>{{ invoice.total }}</td>
+                <td><i class="pi pi-file-edit" (click)="onViewInvoice(invoice)"></i></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+@if(isShowDetails){
+<!-- [style]="{ width: '900px' }" -->
+<p-dialog [(visible)]="isShowDetails" [modal]="true" [maximizable]="true">
+    <div class="card flex flex-wrap gap-3 p-fluid">
+        <div class="grid col-12 formgrid p-fluid">
+            <div class="field col-4">
+                <label class="font-bold block mb-2">UUID:</label>
+                <div>{{selectedInvoice.uuid}}</div>
+            </div>
+            <div class="field col-2">
+                <label class="font-bold block mb-2">Internal ID:</label>
+                <div>{{selectedInvoice.internalId}}</div>
+            </div>
+            <div class="field col-3">
+                <label class="font-bold block mb-2">Date Time Issued:</label>
+                <div>{{selectedInvoice.dateTimeIssued}}</div>
+            </div>
+            <div class="field col-3">
+                <label class="font-bold block mb-2">Status:</label>
+                <div>{{selectedInvoice.status}}</div>
+            </div>
+        </div>
+        <div class="grid col-12 formgrid p-fluid">
+            <div class="field col-4">
+                <label class="font-bold block mb-2">Issuer Name:</label>
+                <div>{{selectedInvoice.issuerName}}</div>
+            </div>
+            <div class="field col-2">
+                <label class="font-bold block mb-2">Tax ID:</label>
+                <div>{{selectedInvoice.issuerId}}</div>
+            </div>
+            <div class="field col-3">
+                <label class="font-bold block mb-2">Currency Ex Rate:</label>
+                <div>{{allInvDetails.invoiceLines[0].unitValue.currencySold}}
+                    {{allInvDetails.invoiceLines[0].unitValue.currencyExchangeRate}}</div>
+            </div>
+            <div class="field col-3">
+                <label class="font-bold block mb-2">Total:</label>
+                <div>{{selectedInvoice.total}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+
+        <h4 class="title">Invoice Lines</h4>
+        <br>
+        <p-table #dt3 [value]="allInvDetails.invoiceLines" [columns]="detailsCols" [paginator]="true" dataKey="uuid"
+            [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+            selectionMode="multiple" [(selection)]="selectedInv">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+                    <th style="min-width: 15rem">
+                        <div class="flex justify-content-between">
+                            Description
+                            <p-columnFilter type="text" field="description" display="menu" />
+                        </div>
+                    </th>
+                    <th style="min-width: 15rem">
+                        <div class="flex justify-content-between">
+                            Unit Price
+                            <p-columnFilter type="text" field="amountEGP" display="menu" />
+                        </div>
+                    </th>
+                    <th style="min-width: 15rem">
+                        <div class="flex justify-content-between">
+                            Quantity
+                            <p-columnFilter type="text" field="quantity" display="menu" />
+                        </div>
+                    </th>
+                    <th style="min-width: 15rem">
+                        <div class="flex justify-content-between">
+                            Sales Total
+                            <p-columnFilter type="text" field="salesTotal" display="menu" />
+                        </div>
+                    </th>
+                    <th style="min-width: 15rem">
+                        <div class="flex justify-content-between">
+                            Total Including Taxes
+                            <p-columnFilter type="text" field="total" display="menu" />
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-line>
+                <tr>
+                    <td>
+                        <p-tableCheckbox [value]="line" />
+                    </td>
+                    <td>{{ line.description }}</td>
+                    <td>{{ line.unitValue.amountEGP }}</td>
+                    <td>{{ line.quantity }} / {{line.unitType}}</td>
+                    <td>
+                        {{ line.salesTotal }}
+                        <br>
+                        {{line.unitValue.currencySold}} {{ line.netTotalForeign}}
+                    </td>
+                    <td>{{ line.total }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No details for the selected job.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-dialog>
+}

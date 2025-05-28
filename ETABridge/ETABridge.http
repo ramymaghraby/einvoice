@@ -1,0 +1,6 @@
+@ETABridge_HostAddress = http://localhost:5258
+
+GET {{ETABridge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
